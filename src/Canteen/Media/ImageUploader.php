@@ -52,9 +52,9 @@ namespace Canteen\Media
 		*  @method resize
 		*  @param {int} width The width of the image
 		*  @param {int} height The height of the image
-		*  @param {String} [mode=ImageResizer::RESIZE_MIN_FILL] The mode of the resize
+		*  @param {String} [mode=ImageResizer::RESIZE_MAX_FILL_CROP] The mode of the resize
 		*/
-		public function resize($width, $height, $mode=ImageResizer::RESIZE_MAX_FILL_CROP) 
+		public function resize($width, $height, $jpegQuality=85, $mode=ImageResizer::RESIZE_MAX_FILL_CROP) 
 		{
 			if ($this->success) 
 			{
@@ -64,7 +64,8 @@ namespace Canteen\Media
 
 				if ($originalWidth > $width || $originalHeight > $height) 
 				{
-					$img = new ImageResizer($this->filePath);
+					$img = new ImageResizer($this->filePath, $jpegQuality);
+					$img->jpegQuality = $jpegQuality;
 					$img->resize($width, $height, $mode);
 					$img->outputResized($this->filePath);
 					$img->destroy();
@@ -78,15 +79,16 @@ namespace Canteen\Media
 		*  @method createThumbnail
 		*  @param {int} width The width of the thumbnail
 		*  @param {int} height The height of the thumbnail
-		*  @param {String} [postfix='_tn'] The string to affix to the end of the file name
-		*  @param {String} [mode=ImageResizer::RESIZE_MIN_FILL] The mode of the resize
+		*  @param {int} jpegQuality The jpeg compression quality from 0 to 100
+		*  @param {String} [mode=ImageResizer::RESIZE_MAX_FILL_CROP] The mode of the resize
+		*  @param {String} [postfix='.tn'] The string to affix to the end of the file name
 		*  @return {Boolean} If the upload was successful
 		*/
-		public function createThumbnail($width, $height, $postfix='_tn', $mode=ImageResizer::RESIZE_MAX_FILL_CROP) 
+		public function createThumbnail($width, $height, $jpegQuality=85, $mode=ImageResizer::RESIZE_MAX_FILL_CROP, $postfix='.tn') 
 		{
 			$this->thumbnailName = str_replace('.' . $this->fileExt, $postfix.'.'.$this->fileExt, $this->filename);
 
-			$img = new ImageResizer($this->filePath);
+			$img = new ImageResizer($this->filePath, $jpegQuality);
 			$img->resize($width, $height, $mode);
 			$img->outputResized($this->uploadDir.$this->thumbnailName);  
 			$img->destroy();

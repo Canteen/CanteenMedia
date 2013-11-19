@@ -13,6 +13,7 @@ namespace Canteen\Media
 	*  @class ImageResizer
 	*  @constructor
 	*  @param {String} fileOriginal The native path to the original file
+	*  @param {int} [jpegQuality=85] The JPEG compression from 0 to 100
 	*/
 	class ImageResizer
 	{
@@ -82,11 +83,13 @@ namespace Canteen\Media
 		/**
 		*   See class definition above for docs on constructor 
 		*/
-		public function __construct($fileOriginal)
+		public function __construct($fileOriginal, $jpegQuality=85)
 		{
 			//constructor of the class
 			//it takes given file and creates image out of it
 			$this->clear();
+			
+			$this->jpegQuality = $jpegQuality;
 
 			if (!file_exists($fileOriginal)) 
 				throw new ResizerError(ResizerError::FILE_DOESNT_EXIST, $fileOriginal);

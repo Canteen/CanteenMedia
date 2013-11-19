@@ -17,7 +17,7 @@ namespace Canteen\Media
 	*  @param {String} uploadDir The upload direction location
 	*  @param {String} [filename=''] Optionally specify a filename
 	*/
-	class ImageUploader extends MediaUploader
+	class ImageUploader extends Uploader
 	{		
 		/** 
 		*  The name of the thumbnail
@@ -54,7 +54,7 @@ namespace Canteen\Media
 		*  @param {int} height The height of the image
 		*  @param {String} [mode=ImageResizer::RESIZE_MIN_FILL] The mode of the resize
 		*/
-		public function resize($width, $height, $mode=ImageResizer::RESIZE_MIN_FILL) 
+		public function resize($width, $height, $mode=ImageResizer::RESIZE_MAX_FILL_CROP) 
 		{
 			if ($this->success) 
 			{
@@ -82,7 +82,7 @@ namespace Canteen\Media
 		*  @param {String} [mode=ImageResizer::RESIZE_MIN_FILL] The mode of the resize
 		*  @return {Boolean} If the upload was successful
 		*/
-		public function createThumbnail($width, $height, $postfix='_tn', $mode=ImageResizer::RESIZE_DISTORT) 
+		public function createThumbnail($width, $height, $postfix='_tn', $mode=ImageResizer::RESIZE_MAX_FILL_CROP) 
 		{
 			$this->thumbnailName = str_replace('.' . $this->fileExt, $postfix.'.'.$this->fileExt, $this->filename);
 

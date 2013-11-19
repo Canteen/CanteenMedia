@@ -111,6 +111,15 @@ namespace Canteen\Media
 		private $_fileExts;
 		
 		/**
+		*  The default max file size in bytes
+		*  @property {int} DEFAULT_SIZE
+		*  @final
+		*  @static
+		*  @default 1048576
+		*/
+		const DEFAULT_SIZE = 1048576;
+		
+		/**
 		*   See class definition above for docs on constructor 
 		*/
 		public function __construct($inputName, $uploadDir, $mimeTypes=array(), $fileExts=array(), $filename='')
@@ -118,7 +127,7 @@ namespace Canteen\Media
 			$this->_mimeTypes = $mimeTypes;
 			$this->_fileExts = $fileExts;
 			
-			$file = isset($_FILES[$inputName]) $_FILES[$inputName] : false;
+			$file = isset($_FILES[$inputName]) ? $_FILES[$inputName] : false;
 			
 			//check for input name
 			if (!$file || !isset($file['name']))
@@ -182,10 +191,10 @@ namespace Canteen\Media
 		/**
 		*  Upload the file
 		*  @method upload
-		*  @param {int} [maxSize=1048576] The maximum file size in bytes (default 1MB)
 		*  @param {Boolean} [overwrite=false] If we should overwrite the existing file
+		*  @param {int} [maxSize=Uploader::DEFAULT_SIZE] The maximum file size in bytes (default 1MB)
 		*/
-		public function upload($maxSize=1048576, $overwrite=false) 
+		public function upload($overwrite=false, $maxSize=self::DEFAULT_SIZE)
 		{
 			// get max file size
 			$this->maxSize = is_numeric($maxSize) ? $maxSize : $this->maxSize;

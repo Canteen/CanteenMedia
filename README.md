@@ -1,11 +1,10 @@
 #Canteen Media
 
-A library for handling form uploads. Optional library for the Canteen Framework and requires not additional Canteen dependencies.
+A library for handling form uploads. Optional library for the Canteen Framework and does not require additional Canteen dependencies.
 
 For documentation of the codebase, please see [Canteen Media docs](http://canteen.github.io/CanteenMedia/).
 
 ##Requirements
-
 
 This library requires a webserver running PHP 5.3+. Also, the root namespace for the library is `Canteen\Media`.
 
@@ -14,22 +13,13 @@ This library requires a webserver running PHP 5.3+. Also, the root namespace for
 Install is available using [Composer](http://getcomposer.org).
 
 ```bash
-composer require canteen/html5 dev-master
+composer require canteen/media dev-master
 ```
 
 Including using the Composer autoloader.
 
 ```php
 require 'vendor/autoload.php';
-```
-
-##Usage
-
-###Basic
-To create an HTML node, simply call global `html` method, passing in the tag name and then any attributes.
-
-```php
-
 ```
 
 ##License##

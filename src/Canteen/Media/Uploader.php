@@ -238,7 +238,7 @@ namespace Canteen\Media
 			//Make sure mime type is legit
 			else if (!in_array($this->fileType, $this->_mimeTypes)) 
 			{
-				throw new UploaderError(UploaderError::MIME_TYPE. $this->fileType);
+				throw new UploaderError(UploaderError::MIME_TYPE, $this->fileType);
 			} 
 			//Make sure file type is legit
 			else if (!in_array($this->fileExt, $this->_fileExts)) 

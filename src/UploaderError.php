@@ -1,13 +1,13 @@
 <?php
 
 /**
-*  @module Canteen\Errors
+*  @module Canteen\Media
 */
-namespace Canteen\Errors
-{	
+namespace Canteen\Media
+{
 	/**
 	*  Exceptions specific to the media Uploader class
-	*  Located in the namespace __Canteen\Errors__.
+	*  Located in the namespace __Canteen\Media__.
 	*  
 	*  @class UploaderError
 	*  @extends Exception

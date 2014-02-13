@@ -1,21 +1,21 @@
 <?php
 
 /**
-*  @module Canteen\Errors
+*  @module Canteen\Media
 */
-namespace Canteen\Errors
-{	
+namespace Canteen\Media
+{
 	/**
 	*  Exceptions specific to the image Resizer Utility.  
-	*  Located in the namespace __Canteen\Errors__.
+	*  Located in the namespace __Canteen\Media__.
 	*  
-	*  @class ResizerError
+	*  @class ImageResizerError
 	*  @extends Exception
 	*  @constructor
 	*  @param {int} code The error code
 	*  @param {String|Array} [data=''] The optional data associated with this error
 	*/
-	class ResizerError extends \Exception
+	class ImageResizerError extends \Exception
 	{		
 		/** 
 		*  Unable to output file

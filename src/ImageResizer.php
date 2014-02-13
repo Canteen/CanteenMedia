@@ -4,9 +4,7 @@
 *  @module Canteen\Media
 */
 namespace Canteen\Media
-{
-	use Canteen\Errors\ResizerError;
-	
+{	
 	/**
 	*  Handles image resize; can output to file or directly to browser.
 	*  Located in the namespace __Canteen\Media__.
@@ -92,13 +90,13 @@ namespace Canteen\Media
 			$this->jpegQuality = $jpegQuality;
 
 			if (!file_exists($fileOriginal)) 
-				throw new ResizerError(ResizerError::FILE_DOESNT_EXIST, $fileOriginal);
+				throw new ImageResizerError(ImageResizerError::FILE_DOESNT_EXIST, $fileOriginal);
 
 			$this->fileOriginal = $fileOriginal;
 			$this->imageOriginal = $this->imageCreateFromFile($fileOriginal);
 			
 			if (!$this->imageOriginal)
-				throw new ResizerError(ResizerError::IMAGE_NOT_CREATED_FROM_FILE, $fileOriginal);
+				throw new ImageResizerError(ImageResizerError::IMAGE_NOT_CREATED_FROM_FILE, $fileOriginal);
 		}
 		
 		/**
@@ -174,7 +172,7 @@ namespace Canteen\Media
 				default:
 					$img = 0;
 					$imgType = 'unknown';
-					throw new ResizerError(ResizerError::IMG_NOT_SUPPORTED, $imageFile);
+					throw new ImageResizerError(ImageResizerError::IMG_NOT_SUPPORTED, $imageFile);
 					break;
 			}
 
@@ -199,7 +197,7 @@ namespace Canteen\Media
 			//Checks if the function exists and returns
 			//created image or false
 			if (!function_exists($function)) 
-				throw new ResizerError(ResizerError::FUNC_DOESNT_EXIST, $function);
+				throw new ImageResizerError(ImageResizerError::FUNC_DOESNT_EXIST, $function);
 			
 			return $function($imageFile);
 		}
@@ -305,7 +303,7 @@ namespace Canteen\Media
 
 				break;
 				default: 
-					throw new ResizerError(ResizerError::UNKNOWN_RESIZE_MODE, $mode);
+					throw new ImageResizerError(ImageResizerError::UNKNOWN_RESIZE_MODE, $mode);
 			}
 
 			// OK here we have $newWidth _height
@@ -313,26 +311,26 @@ namespace Canteen\Media
 			if ($this->useGD2)
 			{
 				if (!function_exists('imagecreatetruecolor'))
-					throw new ResizerError(ResizerError::GD2_UNAVALABLE, 'ImageCreateTruecolor()');
+					throw new ImageResizerError(ImageResizerError::GD2_UNAVALABLE, 'ImageCreateTruecolor()');
 				
 				$this->imageResized = imagecreatetruecolor($newWidth, $newHeight);
 				
 				if (!$this->imageResized)
-					throw new ResizerError(ResizerError::GD2_NOT_CREATED);				
+					throw new ImageResizerError(ImageResizerError::GD2_NOT_CREATED);				
 			} 
 			else 
 			{
 				$this->imageResized = imagecreate($newWidth, $newHeight);
 				
 				if (!$this->imageResized)
-					throw new ResizerError(ResizerError::IMG_NOT_CREATED);
+					throw new ImageResizerError(ImageResizerError::IMG_NOT_CREATED);
 			}
 
 			//Resize
 			if ($this->useGD2)
 			{
 				if (!function_exists('imagecopyresampled'))
-					throw new ResizerError(ResizerError::GD2_UNAVALABLE, 'ImageCopyResampled()');
+					throw new ImageResizerError(ImageResizerError::GD2_UNAVALABLE, 'ImageCopyResampled()');
 				
 				$res = imagecopyresampled($this->imageResized, 
 					$this->imageOriginal, 
@@ -342,7 +340,7 @@ namespace Canteen\Media
 					$this->imageOriginalWidth, $this->imageOriginalHeight // src sizes
 				);
 				
-				if (!$res) throw new ResizerError(ResizerError::GD2_NOT_RESIZED);				
+				if (!$res) throw new ImageResizerError(ImageResizerError::GD2_NOT_RESIZED);				
 			} 
 			else 
 			{
@@ -354,7 +352,7 @@ namespace Canteen\Media
 					$this->imageOriginalWidth, $this->imageOriginalHeight // src sizes
 				);
 				
-				if (!$res) throw new ResizerError(ResizerError::IMG_NOT_RESIZED); 
+				if (!$res) throw new ImageResizerError(ImageResizerError::IMG_NOT_RESIZED); 
 			}
 
 			if ($crop)
@@ -362,22 +360,22 @@ namespace Canteen\Media
 				if ($this->useGD2)
 				{
 					if (!function_exists('imagecreatetruecolor'))
-						throw new ResizerError(ResizerError::GD2_UNAVALABLE, 'ImageCreateTruecolor()');
+						throw new ImageResizerError(ImageResizerError::GD2_UNAVALABLE, 'ImageCreateTruecolor()');
 					
 					$thumb = imagecreatetruecolor($desiredWidth, $desiredHeight);
 					
-					if (!$thumb) throw new ResizerError(ResizerError::GD2_NOT_CREATED);				
+					if (!$thumb) throw new ImageResizerError(ImageResizerError::GD2_NOT_CREATED);				
 				} 
 				else 
 				{
 					$thumb = imagecreate($desiredWidth, $desiredHeight);
-					if (!$thumb) throw new ResizerError(ResizerError::IMG_NOT_CREATED);
+					if (!$thumb) throw new ImageResizerError(ImageResizerError::IMG_NOT_CREATED);
 				}
 
 				if ($this->useGD2)
 				{
 					if (!function_exists('imagecopyresampled'))
-						throw new ResizerError(ResizerError::GD2_UNAVALABLE, 'ImageCopyResampled()');
+						throw new ImageResizerError(ImageResizerError::GD2_UNAVALABLE, 'ImageCopyResampled()');
 					
 					$res = imagecopyresampled($thumb, 
 						$this->imageResized, 
@@ -387,7 +385,7 @@ namespace Canteen\Media
 						$desiredWidth, $desiredHeight
 					);
 					
-					if (!$res) throw new ResizerError(ResizerError::GD2_NOT_RESIZED);
+					if (!$res) throw new ImageResizerError(ImageResizerError::GD2_NOT_RESIZED);
 				} 
 				else 
 				{
@@ -399,7 +397,7 @@ namespace Canteen\Media
 						$desiredWidth, $desiredHeight
 					);
 					
-					if (!$res) throw new ResizerError(ResizerError::IMG_NOT_RESIZED); 
+					if (!$res) throw new ImageResizerError(ImageResizerError::IMG_NOT_RESIZED); 
 				}
 				imagedestroy($this->imageResized);
 				$this->imageResized = $thumb;
@@ -483,7 +481,7 @@ namespace Canteen\Media
 			$destinationFile = trim($destinationFile); 
 			$res = false;
 			
-			if (!$image) throw new ResizerError(ResizerError::NO_IMAGE_FOR_OUTPUT); 
+			if (!$image) throw new ImageResizerError(ImageResizerError::NO_IMAGE_FOR_OUTPUT); 
 			
 			switch($imageType) 
 			{ 
@@ -497,10 +495,10 @@ namespace Canteen\Media
 					$res = Imagepng($image, $destinationFile); 
 					break; 
 				default: 
-					throw new ResizerError(ResizerError::UNKNOWN_OUTPUT_FORMAT, $imageType); 
+					throw new ImageResizerError(ImageResizerError::UNKNOWN_OUTPUT_FORMAT, $imageType); 
 					break; 
 			}
-			if (!$res) throw new ResizerError(ResizerError::UNABLE_TO_OUTPUT, $destinationFile); 
+			if (!$res) throw new ImageResizerError(ImageResizerError::UNABLE_TO_OUTPUT, $destinationFile); 
 			return $res; 
 		} 
 	}

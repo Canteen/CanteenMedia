@@ -1,5 +1,8 @@
 <?php
 
+/**
+*  @module Canteen\Media
+*/
 namespace Canteen\Media
 {
 	/**

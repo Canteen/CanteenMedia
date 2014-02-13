@@ -4,10 +4,7 @@
 *  @module Canteen\Media
 */
 namespace Canteen\Media
-{
-	use Canteen\Utilities\StringUtils;
-	use Canteen\Errors\UploaderError;
-	
+{	
 	/**
 	*  The Uploader is generalized way to upload any number of file types.
 	*  Located in the namespace __Canteen\Media__.

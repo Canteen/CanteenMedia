@@ -4,9 +4,7 @@
 *  @module Canteen\Media
 */
 namespace Canteen\Media
-{
-	use Canteen\Errors\UploaderError;
-	
+{	
 	/**
 	*  Class to upload images (JPEGs or PNGs only).
 	*  Located in the namespace __Canteen\Media__.

@@ -1,7 +1,7 @@
 {
     "name": "canteen/media",
 	"description" : "API for handling media, such as file uploads and image resizing",
-	"version" : "1.0.0",
+	"version" : "1.0.1",
     "type": "library",
 	"keywords": ["uploads", "media", "images"],
     "license": "MIT",

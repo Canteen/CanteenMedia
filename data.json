@@ -2,32 +2,12 @@
     "project": {
         "name": "Canteen Media API",
         "description": "API for handling media, such as file uploads and image resizing",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "logo": ""
     },
     "files": {
-        "src/Canteen/Errors/ResizerError.php": {
-            "name": "src/Canteen/Errors/ResizerError.php",
-            "modules": {
-                "Canteen\\Errors": 1
-            },
-            "classes": {
-                "ResizerError": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/Canteen/Errors/UploaderError.php": {
-            "name": "src/Canteen/Errors/UploaderError.php",
-            "modules": {},
-            "classes": {
-                "UploaderError": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/Canteen/Media/ImageResizer.php": {
-            "name": "src/Canteen/Media/ImageResizer.php",
+        "src/ImageResizer.php": {
+            "name": "src/ImageResizer.php",
             "modules": {
                 "Canteen\\Media": 1
             },
@@ -37,8 +17,17 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/Canteen/Media/ImageUploader.php": {
-            "name": "src/Canteen/Media/ImageUploader.php",
+        "src/ImageResizerError.php": {
+            "name": "src/ImageResizerError.php",
+            "modules": {},
+            "classes": {
+                "ImageResizerError": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/ImageUploader.php": {
+            "name": "src/ImageUploader.php",
             "modules": {},
             "classes": {
                 "ImageUploader": 1
@@ -46,8 +35,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/Canteen/Media/MediaUtils.php": {
-            "name": "src/Canteen/Media/MediaUtils.php",
+        "src/MediaUtils.php": {
+            "name": "src/MediaUtils.php",
             "modules": {},
             "classes": {
                 "MediaUtils": 1
@@ -55,107 +44,45 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/Canteen/Media/Uploader.php": {
-            "name": "src/Canteen/Media/Uploader.php",
+        "src/Uploader.php": {
+            "name": "src/Uploader.php",
             "modules": {},
             "classes": {
                 "Uploader": 1
             },
             "fors": {},
             "namespaces": {}
-        }
-    },
-    "modules": {
-        "Canteen\\Errors": {
-            "name": "Canteen\\Errors",
-            "submodules": {},
+        },
+        "src/UploaderError.php": {
+            "name": "src/UploaderError.php",
+            "modules": {},
             "classes": {
-                "ResizerError": 1,
                 "UploaderError": 1
             },
             "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 8
-        },
+            "namespaces": {}
+        }
+    },
+    "modules": {
         "Canteen\\Media": {
             "name": "Canteen\\Media",
             "submodules": {},
             "classes": {
                 "ImageResizer": 1,
+                "ImageResizerError": 1,
                 "ImageUploader": 1,
                 "MediaUtils": 1,
-                "Uploader": 1
+                "Uploader": 1,
+                "UploaderError": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 11
+            "file": "src/UploaderError.php",
+            "line": 8
         }
     },
     "classes": {
-        "ResizerError": {
-            "name": "ResizerError",
-            "shortname": "ResizerError",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "Canteen\\Errors",
-            "namespace": "",
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 8,
-            "description": "Exceptions specific to the image Resizer Utility.  \nLocated in the namespace __Canteen\\Errors__.",
-            "extends": "Exception",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "code",
-                    "description": "The error code",
-                    "type": "Int"
-                },
-                {
-                    "name": "data",
-                    "description": "The optional data associated with this error",
-                    "type": "String|Array",
-                    "optional": true,
-                    "optdefault": "''"
-                }
-            ]
-        },
-        "UploaderError": {
-            "name": "UploaderError",
-            "shortname": "UploaderError",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "Canteen\\Errors",
-            "namespace": "",
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 8,
-            "description": "Exceptions specific to the media Uploader class\nLocated in the namespace __Canteen\\Errors__.",
-            "extends": "Exception",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "code",
-                    "description": "The error code",
-                    "type": "Int"
-                },
-                {
-                    "name": "data",
-                    "description": "The optional data associated with this error",
-                    "type": "String|Array",
-                    "optional": true,
-                    "optdefault": "''"
-                }
-            ]
-        },
         "ImageResizer": {
             "name": "ImageResizer",
             "shortname": "ImageResizer",
@@ -166,8 +93,8 @@
             "extension_for": [],
             "module": "Canteen\\Media",
             "namespace": "",
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 10,
+            "file": "src/ImageResizer.php",
+            "line": 8,
             "description": "Handles image resize; can output to file or directly to browser.\nLocated in the namespace __Canteen\\Media__.",
             "is_constructor": 1,
             "params": [
@@ -175,6 +102,43 @@
                     "name": "fileOriginal",
                     "description": "The native path to the original file",
                     "type": "String"
+                },
+                {
+                    "name": "jpegQuality",
+                    "description": "The JPEG compression from 0 to 100",
+                    "type": "Int",
+                    "optional": true,
+                    "optdefault": "85"
+                }
+            ]
+        },
+        "ImageResizerError": {
+            "name": "ImageResizerError",
+            "shortname": "ImageResizerError",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Canteen\\Media",
+            "namespace": "",
+            "file": "src/ImageResizerError.php",
+            "line": 8,
+            "description": "Exceptions specific to the image Resizer Utility.  \nLocated in the namespace __Canteen\\Media__.",
+            "extends": "Exception",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "code",
+                    "description": "The error code",
+                    "type": "Int"
+                },
+                {
+                    "name": "data",
+                    "description": "The optional data associated with this error",
+                    "type": "String|Array",
+                    "optional": true,
+                    "optdefault": "''"
                 }
             ]
         },
@@ -188,8 +152,8 @@
             "extension_for": [],
             "module": "Canteen\\Media",
             "namespace": "",
-            "file": "src/Canteen/Media/ImageUploader.php",
-            "line": 10,
+            "file": "src/ImageUploader.php",
+            "line": 8,
             "description": "Class to upload images (JPEGs or PNGs only).\nLocated in the namespace __Canteen\\Media__.",
             "extends": "MediaUploader",
             "is_constructor": 1,
@@ -223,8 +187,8 @@
             "extension_for": [],
             "module": "Canteen\\Media",
             "namespace": "",
-            "file": "src/Canteen/Media/MediaUtils.php",
-            "line": 5,
+            "file": "src/MediaUtils.php",
+            "line": 8,
             "description": "Media specific utilities functions.\nLocated in the namespace __Canteen\\Media__."
         },
         "Uploader": {
@@ -237,8 +201,8 @@
             "extension_for": [],
             "module": "Canteen\\Media",
             "namespace": "",
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 11,
+            "file": "src/Uploader.php",
+            "line": 8,
             "description": "The Uploader is generalized way to upload any number of file types.\nLocated in the namespace __Canteen\\Media__.",
             "is_constructor": 1,
             "params": [
@@ -270,390 +234,42 @@
                     "optdefault": "''"
                 }
             ]
+        },
+        "UploaderError": {
+            "name": "UploaderError",
+            "shortname": "UploaderError",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Canteen\\Media",
+            "namespace": "",
+            "file": "src/UploaderError.php",
+            "line": 8,
+            "description": "Exceptions specific to the media Uploader class\nLocated in the namespace __Canteen\\Media__.",
+            "extends": "Exception",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "code",
+                    "description": "The error code",
+                    "type": "Int"
+                },
+                {
+                    "name": "data",
+                    "description": "The optional data associated with this error",
+                    "type": "String|Array",
+                    "optional": true,
+                    "optdefault": "''"
+                }
+            ]
         }
     },
     "classitems": [
         {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 20,
-            "description": "Unable to output file",
-            "itemtype": "property",
-            "name": "UNABLE_TO_OUTPUT",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 28,
-            "description": "Source file doesn't exit",
-            "itemtype": "property",
-            "name": "FILE_DOESNT_EXIST",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 36,
-            "description": "Function doesn't exist, for API checks",
-            "itemtype": "property",
-            "name": "FUNC_DOESNT_EXIST",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 44,
-            "description": "GD2 is installed, function ImageCreateTruecolor() exists, but image is not created",
-            "itemtype": "property",
-            "name": "GD2_NOT_CREATED",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 52,
-            "description": "Image is not created ImageCreate(). (GD2 support is OFF)",
-            "itemtype": "property",
-            "name": "IMG_NOT_CREATED",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 60,
-            "description": "You specified to use GD2, but not all GD2 functions are present.",
-            "itemtype": "property",
-            "name": "GD2_UNAVALABLE",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 68,
-            "description": "GD2 is installed, function ImageCopyResampled() exists, but image is not resized",
-            "itemtype": "property",
-            "name": "GD2_NOT_RESIZED",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 76,
-            "description": "Image was not resized. (GD2 support is OFF)",
-            "itemtype": "property",
-            "name": "IMG_NOT_RESIZED",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 84,
-            "description": "The image format cannot be output",
-            "itemtype": "property",
-            "name": "UNKNOWN_OUTPUT_FORMAT",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 92,
-            "description": "Image you are trying to output does not exist",
-            "itemtype": "property",
-            "name": "NO_IMAGE_FOR_OUTPUT",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 100,
-            "description": "Can not create image. Sorry, this image type is not supported yet.",
-            "itemtype": "property",
-            "name": "IMG_NOT_SUPPORTED",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 108,
-            "description": "The collection of messages",
-            "itemtype": "property",
-            "name": "messages",
-            "type": "Array",
-            "access": "private",
-            "tagname": "",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 129,
-            "description": "The label for an error that is unknown or unfound in messages",
-            "itemtype": "property",
-            "name": "UNKNOWN",
-            "type": "String",
-            "static": 1,
-            "final": 1,
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/ResizerError.php",
-            "line": 137,
-            "description": "See class definition above for docs on constructor",
-            "class": "ResizerError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 20,
-            "description": "Cannot resize until upload has been completed",
-            "itemtype": "property",
-            "name": "CANNOT_RESIZE",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 28,
-            "description": "Filesize is over the server limit",
-            "itemtype": "property",
-            "name": "MAX_SIZE",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 36,
-            "description": "File extension not allowed",
-            "itemtype": "property",
-            "name": "FILE_EXT",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 44,
-            "description": "Mime type not allowed",
-            "itemtype": "property",
-            "name": "MIME_TYPE",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 52,
-            "description": "File was not moved",
-            "itemtype": "property",
-            "name": "NOT_MOVED",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 60,
-            "description": "Upload result was unsuccessful",
-            "itemtype": "property",
-            "name": "BAD_UPLOAD",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 68,
-            "description": "Change permission to writable",
-            "itemtype": "property",
-            "name": "PERMISSION",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 76,
-            "description": "No file to upload",
-            "itemtype": "property",
-            "name": "NO_INPUT",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 84,
-            "description": "Upload was not successful",
-            "itemtype": "property",
-            "name": "UNSUCCESSFUL",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 92,
-            "description": "Thumbnail creation failed",
-            "itemtype": "property",
-            "name": "THUMBNAIL",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 100,
-            "description": "Upload directory does not exist",
-            "itemtype": "property",
-            "name": "UPLOAD_DIR",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 108,
-            "description": "File already exists",
-            "itemtype": "property",
-            "name": "ALREADY_EXISTS",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 116,
-            "description": "No MIME types defined for this uploader",
-            "itemtype": "property",
-            "name": "UNDEFINED_MIMES",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 124,
-            "description": "No file extensions defined for this uploader",
-            "itemtype": "property",
-            "name": "UNDEFINED_EXTS",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 132,
-            "description": "Not enough memory to complete this task",
-            "itemtype": "property",
-            "name": "MEMORY_LIMIT",
-            "type": "Int",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 140,
-            "description": "The collection of messages",
-            "itemtype": "property",
-            "name": "messages",
-            "type": "Array",
-            "access": "private",
-            "tagname": "",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 165,
-            "description": "The label for an error that is unknown or unfound in messages",
-            "itemtype": "property",
-            "name": "UNKNOWN",
-            "type": "String",
-            "static": 1,
-            "final": 1,
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Errors/UploaderError.php",
-            "line": 173,
-            "description": "See class definition above for docs on constructor",
-            "class": "UploaderError",
-            "module": "Canteen\\Errors"
-        },
-        {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 35,
+            "file": "src/ImageResizer.php",
+            "line": 34,
             "description": "The JPEG quality from 0 to 100",
             "itemtype": "property",
             "name": "jpegQuality",
@@ -663,8 +279,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 42,
+            "file": "src/ImageResizer.php",
+            "line": 41,
             "description": "If we should try to use the GD2 library",
             "itemtype": "property",
             "name": "useGD2",
@@ -676,8 +292,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 50,
+            "file": "src/ImageResizer.php",
+            "line": 49,
             "description": "Resize Mode to fill the entire area",
             "itemtype": "property",
             "name": "RESIZE_MAX_FILL",
@@ -688,8 +304,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 58,
+            "file": "src/ImageResizer.php",
+            "line": 57,
             "description": "Resize mode to fill and crop the image down",
             "itemtype": "property",
             "name": "RESIZE_MAX_FILL_CROP",
@@ -700,8 +316,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 66,
+            "file": "src/ImageResizer.php",
+            "line": 65,
             "description": "Fill to the minimum size",
             "itemtype": "property",
             "name": "RESIZE_MIN_FILL",
@@ -712,8 +328,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 74,
+            "file": "src/ImageResizer.php",
+            "line": 73,
             "description": "Resize by distorting the image to file the whole size",
             "itemtype": "property",
             "name": "RESIZE_DISTORT",
@@ -724,15 +340,15 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 82,
+            "file": "src/ImageResizer.php",
+            "line": 81,
             "description": "See class definition above for docs on constructor",
             "class": "ImageResizer",
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 107,
+            "file": "src/ImageResizer.php",
+            "line": 102,
             "description": "Destroy this instance and any temporary files",
             "itemtype": "method",
             "name": "destroy",
@@ -740,8 +356,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 124,
+            "file": "src/ImageResizer.php",
+            "line": 119,
             "description": "Clear all the class member varaibles",
             "itemtype": "method",
             "name": "clear",
@@ -751,8 +367,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 216,
+            "file": "src/ImageResizer.php",
+            "line": 205,
             "description": "Resize the image",
             "itemtype": "method",
             "name": "resize",
@@ -779,8 +395,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 410,
+            "file": "src/ImageResizer.php",
+            "line": 407,
             "description": "Output the original image",
             "itemtype": "method",
             "name": "outputOriginal",
@@ -804,8 +420,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 425,
+            "file": "src/ImageResizer.php",
+            "line": 422,
             "description": "Output the resized image",
             "itemtype": "method",
             "name": "outputResized",
@@ -829,8 +445,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageResizer.php",
-            "line": 471,
+            "file": "src/ImageResizer.php",
+            "line": 468,
             "description": "Abstract method to save an image to a destination",
             "itemtype": "method",
             "name": "outputImage",
@@ -861,8 +477,173 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageUploader.php",
-            "line": 22,
+            "file": "src/ImageResizerError.php",
+            "line": 20,
+            "description": "Unable to output file",
+            "itemtype": "property",
+            "name": "UNABLE_TO_OUTPUT",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 28,
+            "description": "Source file doesn't exit",
+            "itemtype": "property",
+            "name": "FILE_DOESNT_EXIST",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 36,
+            "description": "Function doesn't exist, for API checks",
+            "itemtype": "property",
+            "name": "FUNC_DOESNT_EXIST",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 44,
+            "description": "GD2 is installed, function ImageCreateTruecolor() exists, but image is not created",
+            "itemtype": "property",
+            "name": "GD2_NOT_CREATED",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 52,
+            "description": "Image is not created ImageCreate(). (GD2 support is OFF)",
+            "itemtype": "property",
+            "name": "IMG_NOT_CREATED",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 60,
+            "description": "You specified to use GD2, but not all GD2 functions are present.",
+            "itemtype": "property",
+            "name": "GD2_UNAVALABLE",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 68,
+            "description": "GD2 is installed, function ImageCopyResampled() exists, but image is not resized",
+            "itemtype": "property",
+            "name": "GD2_NOT_RESIZED",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 76,
+            "description": "Image was not resized. (GD2 support is OFF)",
+            "itemtype": "property",
+            "name": "IMG_NOT_RESIZED",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 84,
+            "description": "The image format cannot be output",
+            "itemtype": "property",
+            "name": "UNKNOWN_OUTPUT_FORMAT",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 92,
+            "description": "Image you are trying to output does not exist",
+            "itemtype": "property",
+            "name": "NO_IMAGE_FOR_OUTPUT",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 100,
+            "description": "Can not create image. Sorry, this image type is not supported yet.",
+            "itemtype": "property",
+            "name": "IMG_NOT_SUPPORTED",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 108,
+            "description": "The collection of messages",
+            "itemtype": "property",
+            "name": "messages",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 129,
+            "description": "The label for an error that is unknown or unfound in messages",
+            "itemtype": "property",
+            "name": "UNKNOWN",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageResizerError.php",
+            "line": 137,
+            "description": "See class definition above for docs on constructor",
+            "class": "ImageResizerError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/ImageUploader.php",
+            "line": 20,
             "description": "The name of the thumbnail",
             "itemtype": "property",
             "name": "thumbnailName",
@@ -871,15 +652,15 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageUploader.php",
-            "line": 28,
+            "file": "src/ImageUploader.php",
+            "line": 26,
             "description": "See class definition above for docs on constructor",
             "class": "ImageUploader",
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageUploader.php",
-            "line": 50,
+            "file": "src/ImageUploader.php",
+            "line": 48,
             "description": "Resize the image",
             "itemtype": "method",
             "name": "resize",
@@ -899,15 +680,15 @@
                     "description": "The mode of the resize",
                     "type": "String",
                     "optional": true,
-                    "optdefault": "ImageResizer::RESIZE_MIN_FILL"
+                    "optdefault": "ImageResizer::RESIZE_MAX_FILL_CROP"
                 }
             ],
             "class": "ImageUploader",
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/ImageUploader.php",
-            "line": 76,
+            "file": "src/ImageUploader.php",
+            "line": 75,
             "description": "Create a thumbnail image",
             "itemtype": "method",
             "name": "createThumbnail",
@@ -923,18 +704,23 @@
                     "type": "Int"
                 },
                 {
-                    "name": "postfix",
-                    "description": "The string to affix to the end of the file name",
-                    "type": "String",
-                    "optional": true,
-                    "optdefault": "'_tn'"
+                    "name": "jpegQuality",
+                    "description": "The jpeg compression quality from 0 to 100",
+                    "type": "Int"
                 },
                 {
                     "name": "mode",
                     "description": "The mode of the resize",
                     "type": "String",
                     "optional": true,
-                    "optdefault": "ImageResizer::RESIZE_MIN_FILL"
+                    "optdefault": "ImageResizer::RESIZE_MAX_FILL_CROP"
+                },
+                {
+                    "name": "postfix",
+                    "description": "The string to affix to the end of the file name",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "'.tn'"
                 }
             ],
             "return": {
@@ -945,8 +731,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/MediaUtils.php",
-            "line": 12,
+            "file": "src/MediaUtils.php",
+            "line": 15,
             "description": "Convert number of a number of bytes into a readable filesize format",
             "itemtype": "method",
             "name": "filesizeFormat",
@@ -966,8 +752,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 24,
+            "file": "src/Uploader.php",
+            "line": 21,
             "description": "The maximum size of the file upload in bytes",
             "itemtype": "property",
             "name": "maxSize",
@@ -978,8 +764,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 31,
+            "file": "src/Uploader.php",
+            "line": 28,
             "description": "If the upload was successful",
             "itemtype": "property",
             "name": "success",
@@ -988,8 +774,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 37,
+            "file": "src/Uploader.php",
+            "line": 34,
             "description": "The type of file (mime type)",
             "itemtype": "property",
             "name": "fileType",
@@ -1000,8 +786,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 44,
+            "file": "src/Uploader.php",
+            "line": 41,
             "description": "The file extension",
             "itemtype": "property",
             "name": "fileExt",
@@ -1012,8 +798,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 51,
+            "file": "src/Uploader.php",
+            "line": 48,
             "description": "The path to the target output file",
             "itemtype": "property",
             "name": "filePath",
@@ -1024,8 +810,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 58,
+            "file": "src/Uploader.php",
+            "line": 55,
             "description": "The size of the uploaded file",
             "itemtype": "property",
             "name": "filesize",
@@ -1036,8 +822,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 65,
+            "file": "src/Uploader.php",
+            "line": 62,
             "description": "The temporary upload file name",
             "itemtype": "property",
             "name": "tempName",
@@ -1048,8 +834,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 72,
+            "file": "src/Uploader.php",
+            "line": 69,
             "description": "If the uploaded file was moved",
             "itemtype": "property",
             "name": "uploadResult",
@@ -1060,8 +846,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 79,
+            "file": "src/Uploader.php",
+            "line": 76,
             "description": "The upload location",
             "itemtype": "property",
             "name": "uploadDir",
@@ -1072,8 +858,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 86,
+            "file": "src/Uploader.php",
+            "line": 83,
             "description": "PHP's memory limit in bytes",
             "itemtype": "property",
             "name": "memoryLimit",
@@ -1084,8 +870,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 93,
+            "file": "src/Uploader.php",
+            "line": 90,
             "description": "The name of the file",
             "itemtype": "property",
             "name": "filename",
@@ -1094,8 +880,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 99,
+            "file": "src/Uploader.php",
+            "line": 96,
             "description": "Acceptable mime types",
             "itemtype": "property",
             "name": "_mimeTypes",
@@ -1106,8 +892,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 106,
+            "file": "src/Uploader.php",
+            "line": 103,
             "description": "Acceptable file extensions",
             "itemtype": "property",
             "name": "_fileExts",
@@ -1118,15 +904,28 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 113,
+            "file": "src/Uploader.php",
+            "line": 110,
+            "description": "The default max file size in bytes",
+            "itemtype": "property",
+            "name": "DEFAULT_SIZE",
+            "type": "Int",
+            "final": 1,
+            "static": 1,
+            "default": "1048576",
+            "class": "Uploader",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/Uploader.php",
+            "line": 119,
             "description": "See class definition above for docs on constructor",
             "class": "Uploader",
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 154,
+            "file": "src/Uploader.php",
+            "line": 160,
             "description": "Get the file extension",
             "itemtype": "method",
             "name": "getExtension",
@@ -1138,8 +937,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 164,
+            "file": "src/Uploader.php",
+            "line": 170,
             "description": "Fix the file name by removing non-valid characters",
             "itemtype": "method",
             "name": "fixFilename",
@@ -1160,33 +959,33 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 182,
+            "file": "src/Uploader.php",
+            "line": 188,
             "description": "Upload the file",
             "itemtype": "method",
             "name": "upload",
             "params": [
-                {
-                    "name": "maxSize",
-                    "description": "The maximum file size in bytes (default 1MB)",
-                    "type": "Int",
-                    "optional": true,
-                    "optdefault": "1048576"
-                },
                 {
                     "name": "overwrite",
                     "description": "If we should overwrite the existing file",
                     "type": "Boolean",
                     "optional": true,
                     "optdefault": "false"
+                },
+                {
+                    "name": "maxSize",
+                    "description": "The maximum file size in bytes (default 1MB)",
+                    "type": "Int",
+                    "optional": true,
+                    "optdefault": "Uploader::DEFAULT_SIZE"
                 }
             ],
             "class": "Uploader",
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 200,
+            "file": "src/Uploader.php",
+            "line": 206,
             "description": "Run the initial check for the file type and extensions",
             "itemtype": "method",
             "name": "initCheck",
@@ -1207,8 +1006,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 243,
+            "file": "src/Uploader.php",
+            "line": 249,
             "description": "Post check after upload to make sure everything went well",
             "itemtype": "method",
             "name": "postCheck",
@@ -1222,8 +1021,8 @@
             "module": "Canteen\\Media"
         },
         {
-            "file": "src/Canteen/Media/Uploader.php",
-            "line": 269,
+            "file": "src/Uploader.php",
+            "line": 275,
             "description": "If the upload was a success",
             "itemtype": "method",
             "name": "success",
@@ -1233,28 +1032,241 @@
             },
             "class": "Uploader",
             "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 20,
+            "description": "Cannot resize until upload has been completed",
+            "itemtype": "property",
+            "name": "CANNOT_RESIZE",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 28,
+            "description": "Filesize is over the server limit",
+            "itemtype": "property",
+            "name": "MAX_SIZE",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 36,
+            "description": "File extension not allowed",
+            "itemtype": "property",
+            "name": "FILE_EXT",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 44,
+            "description": "Mime type not allowed",
+            "itemtype": "property",
+            "name": "MIME_TYPE",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 52,
+            "description": "File was not moved",
+            "itemtype": "property",
+            "name": "NOT_MOVED",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 60,
+            "description": "Upload result was unsuccessful",
+            "itemtype": "property",
+            "name": "BAD_UPLOAD",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 68,
+            "description": "Change permission to writable",
+            "itemtype": "property",
+            "name": "PERMISSION",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 76,
+            "description": "No file to upload",
+            "itemtype": "property",
+            "name": "NO_INPUT",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 84,
+            "description": "Upload was not successful",
+            "itemtype": "property",
+            "name": "UNSUCCESSFUL",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 92,
+            "description": "Thumbnail creation failed",
+            "itemtype": "property",
+            "name": "THUMBNAIL",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 100,
+            "description": "Upload directory does not exist",
+            "itemtype": "property",
+            "name": "UPLOAD_DIR",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 108,
+            "description": "File already exists",
+            "itemtype": "property",
+            "name": "ALREADY_EXISTS",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 116,
+            "description": "No MIME types defined for this uploader",
+            "itemtype": "property",
+            "name": "UNDEFINED_MIMES",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 124,
+            "description": "No file extensions defined for this uploader",
+            "itemtype": "property",
+            "name": "UNDEFINED_EXTS",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 132,
+            "description": "Not enough memory to complete this task",
+            "itemtype": "property",
+            "name": "MEMORY_LIMIT",
+            "type": "Int",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 140,
+            "description": "The collection of messages",
+            "itemtype": "property",
+            "name": "messages",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 165,
+            "description": "The label for an error that is unknown or unfound in messages",
+            "itemtype": "property",
+            "name": "UNKNOWN",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
+        },
+        {
+            "file": "src/UploaderError.php",
+            "line": 173,
+            "description": "See class definition above for docs on constructor",
+            "class": "UploaderError",
+            "module": "Canteen\\Media"
         }
     ],
     "warnings": [
         {
             "message": "Missing item type\nSee class definition above for docs on constructor",
-            "line": " src/Canteen/Errors/ResizerError.php:137"
+            "line": " src/ImageResizer.php:81"
         },
         {
             "message": "Missing item type\nSee class definition above for docs on constructor",
-            "line": " src/Canteen/Errors/UploaderError.php:173"
+            "line": " src/ImageResizerError.php:137"
         },
         {
             "message": "Missing item type\nSee class definition above for docs on constructor",
-            "line": " src/Canteen/Media/ImageResizer.php:82"
+            "line": " src/ImageUploader.php:26"
         },
         {
             "message": "Missing item type\nSee class definition above for docs on constructor",
-            "line": " src/Canteen/Media/ImageUploader.php:28"
+            "line": " src/Uploader.php:119"
         },
         {
             "message": "Missing item type\nSee class definition above for docs on constructor",
-            "line": " src/Canteen/Media/Uploader.php:113"
+            "line": " src/UploaderError.php:173"
         }
     ]
 }
